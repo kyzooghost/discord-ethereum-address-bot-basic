@@ -1,7 +1,8 @@
-// Admin-only command to see all mappings
+// Admin-only command to view entire database
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const ethers = require("ethers")
+const { getList } = require('../aws-dynamodb');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,14 +10,18 @@ module.exports = {
 		.setDescription('Admin Only - View all mapped Ethereum addresses'),
 
 	async execute(interaction) {
-
-
-    const ethAddress = hashmap.get(interaction.user.tag)
-    
-    return interaction.reply({
-        content: `Your Ethereum address is ${ethAddress}`,
-        ephemeral: true
-    });
+        try {
+            const list = await getList()
+            return interaction.reply({
+                content: `${list}`,
+                ephemeral: true
+            });         
+        } catch {
+            return interaction.reply({
+                content: `Error in /view-all slash command`,
+                ephemeral: true
+            });
+        }
     }
 }
 

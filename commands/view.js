@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const ethers = require("ethers")
+const { getEthAddress } = require('../aws-dynamodb');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -7,20 +8,21 @@ module.exports = {
 		.setDescription('View your Ethereum address'),
 
 	async execute(interaction) {
+        const discordHandle = interaction.user.tag
 
-        // If no current entry
-        if (!hashmap.has(interaction.user.tag)) {
+        try {
+            let ethAddress = await getEthAddress(discordHandle)
+
             return interaction.reply({
-                content: 'You have not verified a valid Ethereum address yet, use /verify command',
+                content: `Your verified Ethereum address is ${ethAddress}`,
+                ephemeral: true
+            });
+
+        } catch {
+            return interaction.reply({
+                content: 'You have not verified an Ethereum address yet, use /verify command',
                 ephemeral: true
             });
         }
-
-        const ethAddress = hashmap.get(interaction.user.tag)
-        
-        return interaction.reply({
-            content: `Your Ethereum address is ${ethAddress}`,
-            ephemeral: true
-        });
     }
 }
