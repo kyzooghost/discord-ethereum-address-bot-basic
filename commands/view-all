@@ -9,9 +9,6 @@
 // It seems that you need to customize permissions config for each server setup individually, using Discord client/guild/role IDs. I can't find the GUI to do this.
 // Also it's better to hide this functionality entirely from Discord users, with a slash command the slash command is still visible even if a user doesn't have the permissions to use it
 
-// How to set up channel only for slash commands
-// Do I have DynamoDB access in Solace AWS account?
-
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageAttachment } = require('discord.js')
 const ethers = require("ethers")
@@ -41,8 +38,3 @@ module.exports = {
         }
     }
 }
-
-// Set up role-permissions in index.js
-// https://discordjs.guide/interactions/slash-commands.html#user-permissions
-// Set up download of .json 
-// https://2ality.com/2015/08/es6-map-json.html

@@ -1,5 +1,5 @@
 const { ddbDocClient } = require("./client")
-const { PutCommand, DeleteCommand, ScanCommand, GetCommand } = require("@aws-sdk/lib-dynamodb")
+const { PutCommand, DeleteCommand, GetCommand } = require("@aws-sdk/lib-dynamodb")
 
 // Get the Ethereum address linked to a Discord username
 async function getEthAddress(discordName) {
@@ -22,21 +22,22 @@ async function getEthAddress(discordName) {
 // Get the entire key-value list (key = discordName, value = ethAddress)
 // Some online comments warn against using ScanCommand for database with 6-7+ database entries
 // Only anticipating 3-4 figure database entries for our app, should be fine
-async function getList() {
 
-    const params = {
-        TableName: process.env.TABLE_NAME,
-    };
+// async function getList() {
+
+//     const params = {
+//         TableName: process.env.TABLE_NAME,
+//     };
   
-    try {
-      const data = await ddbDocClient.send(new ScanCommand(params));
-      console.log("Successful getList: ", data.Items);
-      return data.Items
-    } catch (err) {
-        console.error(err)
-        throw 'getList error'
-    }
-}
+//     try {
+//       const data = await ddbDocClient.send(new ScanCommand(params));
+//       console.log("Successful getList: ", data.Items);
+//       return data.Items
+//     } catch (err) {
+//         console.error(err)
+//         throw 'getList error'
+//     }
+// }
 
 // Delete the entry corresponding to 'discordName'
 async function deleteEntry(discordName) {
