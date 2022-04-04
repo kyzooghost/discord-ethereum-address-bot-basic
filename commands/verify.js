@@ -12,19 +12,19 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('verify')
 		.setDescription('Verify your Ethereum address')
-        .addStringOption(option =>
-            option.setName('ethAddress')
-                    .setDescription('Your Ethereum address')
-                    .setRequired(true)),
+        .addStringOption(option => 
+            option.setName('ethereum-address')
+                .setDescription('Your Ethereum address')
+                .setRequired(true)),
 
 	async execute(interaction) {
         // If valid Eth address
-        const ethAddress = interaction.options.getString('ethAddress')
+        const ethAddress = interaction.options.getString('ethereum-address')
         const discordHandle = interaction.user.tag
 
         if ( !ethers.utils.isAddress(ethAddress) ) {
             return interaction.reply({
-                content: 'Did not enter a valid Ethereum address',
+                content: 'You did not enter a valid Ethereum address',
                 ephemeral: true
             });
         } else {

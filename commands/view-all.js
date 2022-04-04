@@ -1,5 +1,9 @@
 // Admin-only command to view entire database
 
+// How to set-up admin-only command?
+// How to set up json download?
+// How to set up AWS config into .env
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const ethers = require("ethers")
 const { getList } = require('../aws-dynamodb');
