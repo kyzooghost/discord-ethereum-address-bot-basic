@@ -76,4 +76,4 @@ async function createEntry(discordName, ethAddress) {
     }
 }
 
-module.exports = { getEthAddress, getList, deleteEntry, createEntry }
+module.exports = { getEthAddress, deleteEntry, createEntry }
