@@ -10,7 +10,7 @@
 // Also it's better to hide this functionality entirely from Discord users, with a slash command the slash command is still visible even if a user doesn't have the permissions to use it
 
 // How to set up channel only for slash commands
-// How to set up AWS config into .env
+// Do I have DynamoDB access in Solace AWS account?
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageAttachment } = require('discord.js')
