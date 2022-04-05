@@ -16,3 +16,7 @@ Discord users will use slash commands to interact with the bot
 4. Run the bot with `node index`. This is intended to be running continuously.
 
 # Sneak Pics
+
+![](https://github.com/solace-fi/discord-ethereum-address-bot/blob/main/static/img/discord_1.png)
+![](https://github.com/solace-fi/discord-ethereum-address-bot/blob/main/static/img/discord_2.png)
+![](https://github.com/solace-fi/discord-ethereum-address-bot/blob/main/static/img/aws_1.png)
