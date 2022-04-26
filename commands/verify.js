@@ -37,7 +37,7 @@ module.exports = {
                 await deleteEntry(discordHandle)
                 await createEntry(discordHandle, ethAddress)
                 return interaction.reply({
-                    content: 'Successfully changed your verified Etheurem address',
+                    content: 'Successfully changed your verified Ethereum address',
                     ephemeral: true
                 });
             } catch {
