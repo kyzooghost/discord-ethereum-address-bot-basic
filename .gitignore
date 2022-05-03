@@ -3,3 +3,5 @@ node_modules
 a.js
 test.pem
 agent.log
+.env_solace
+env.sh
