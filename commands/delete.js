@@ -9,9 +9,9 @@ module.exports = {
 
 	async execute(interaction) {
         const discordHandle = interaction.user.tag
+        let ethAddress = await getEthAddress(discordHandle)
 
-        try {
-            let ethAddress = await getEthAddress(discordHandle)
+        if (ethAddress) {
             await deleteEntry(discordHandle)
 
             return interaction.reply({
@@ -19,11 +19,30 @@ module.exports = {
                 ephemeral: true
             });
 
-        } catch {
+        } else {
             return interaction.reply({
                 content: 'You have not connected an Ethereum address yet, use /connect command',
                 ephemeral: true
             });
         }
+
+
+
+
+        // try {
+        //     let ethAddress = await getEthAddress(discordHandle)
+        //     await deleteEntry(discordHandle)
+
+        //     return interaction.reply({
+        //         content: 'Successfully deleted your Ethereum address',
+        //         ephemeral: true
+        //     });
+
+        // } catch {
+        //     return interaction.reply({
+        //         content: 'You have not connected an Ethereum address yet, use /connect command',
+        //         ephemeral: true
+        //     });
+        // }
     }
 }

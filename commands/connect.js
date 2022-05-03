@@ -29,17 +29,19 @@ module.exports = {
         } else {
             // If valid Ethereum address
             // Try to obtain entry in database
-            try {
+
+            let ethAddress = await getEthAddress(discordHandle)
+
+            if (ethAddress) {
             // -> No error => Entry found => Delete old entry, create new entry
                 // Is interaction.user.tag the Discord handle string we want?
-                await getEthAddress(discordHandle)
                 await deleteEntry(discordHandle)
                 await createEntry(discordHandle, ethAddress)
                 return interaction.reply({
                     content: 'Successfully changed your connected Ethereum address',
                     ephemeral: true
                 });
-            } catch {
+            } else {
             // -> Error => Entry not there => Create new entry with createEntry
             // Code smell here - error !== "entry not there", but we are treating it as such
                 await createEntry(discordHandle, ethAddress)
@@ -48,6 +50,26 @@ module.exports = {
                     ephemeral: true
                 });
             }
+
+            // try {
+            // // -> No error => Entry found => Delete old entry, create new entry
+            //     // Is interaction.user.tag the Discord handle string we want?
+            //     await getEthAddress(discordHandle)
+            //     await deleteEntry(discordHandle)
+            //     await createEntry(discordHandle, ethAddress)
+            //     return interaction.reply({
+            //         content: 'Successfully changed your connected Ethereum address',
+            //         ephemeral: true
+            //     });
+            // } catch {
+            // // -> Error => Entry not there => Create new entry with createEntry
+            // // Code smell here - error !== "entry not there", but we are treating it as such
+            //     await createEntry(discordHandle, ethAddress)
+            //     return interaction.reply({
+            //         content: 'Successfully connected your Ethereum address',
+            //         ephemeral: true
+            //     });
+            // }
         }
     }
 }

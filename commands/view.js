@@ -10,19 +10,33 @@ module.exports = {
 	async execute(interaction) {
         const discordHandle = interaction.user.tag
 
-        try {
-            let ethAddress = await getEthAddress(discordHandle)
+        let ethAddress = await getEthAddress(discordHandle)
 
+        if (ethAddress) {
             return interaction.reply({
                 content: `Your connect Ethereum address is ${ethAddress}`,
                 ephemeral: true
             });
-
-        } catch {
+        } else {
             return interaction.reply({
                 content: 'You have not connected an Ethereum address yet, use /connect command',
                 ephemeral: true
             });
         }
+
+        // try {
+        //     let ethAddress = await getEthAddress(discordHandle)
+
+        //     return interaction.reply({
+        //         content: `Your connect Ethereum address is ${ethAddress}`,
+        //         ephemeral: true
+        //     });
+
+        // } catch {
+        //     return interaction.reply({
+        //         content: 'You have not connected an Ethereum address yet, use /connect command',
+        //         ephemeral: true
+        //     });
+        // }
     }
 }

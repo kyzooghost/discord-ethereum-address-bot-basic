@@ -11,11 +11,16 @@ async function getEthAddress(discordName) {
     };
     try {
         const data = await ddbDocClient.send(new GetCommand(params));
-        console.log("Successful getEthAddress: ", data.Item.ethAddress);
-        return data.Item.ethAddress
+        if (data.Item.ethAddress) {
+            console.log("Successful getEthAddress: ", data.Item.ethAddress);
+            return data.Item.ethAddress
+        } else {
+            return null
+        }
     } catch (err) {
         console.error(err)
-        throw 'getEthAddress error'
+        return null
+        // throw 'getEthAddress error'
     }
 }
 
