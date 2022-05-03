@@ -14,8 +14,12 @@ module.exports = {
 
 		if (!command) return;
 
+		const acceptedCommands = ['view', 'delete', 'connect']
+		if (!acceptedCommands.includes(command.data.name)) return;
+
+		console.log(command.data.name)
+
 		try {
-			await interaction.deferReply();
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(error);
