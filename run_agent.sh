@@ -1,3 +1,3 @@
 #!/bin/bash
 
-node deploy-commands && node index &>agent.log &
+node index &>agent.log &
