@@ -18,3 +18,5 @@ curl -X POST \
 -H "Authorization: Bot $TOKEN" \
 -d '{"name":"view","description":"View your Ethereum address"}' \
 "https://discord.com/api/v8/applications/$CLIENT_ID/commands"
+
+# https://discord.com/developers/docs/interactions/application-commands#registering-a-command
