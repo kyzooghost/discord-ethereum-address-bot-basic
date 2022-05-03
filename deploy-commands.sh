@@ -16,5 +16,5 @@ curl -X POST \
 curl -X POST \
 -H 'Content-Type: application/json' \
 -H "Authorization: Bot $TOKEN" \
--d '{"name":"view","description":"Connect your Ethereum address"}' \
+-d '{"name":"view","description":"View your Ethereum address"}' \
 "https://discord.com/api/v8/applications/$CLIENT_ID/commands"
