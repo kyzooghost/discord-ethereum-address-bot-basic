@@ -14,13 +14,13 @@ module.exports = {
             let ethAddress = await getEthAddress(discordHandle)
 
             return interaction.reply({
-                content: `Your verified Ethereum address is ${ethAddress}`,
+                content: `Your connect Ethereum address is ${ethAddress}`,
                 ephemeral: true
             });
 
         } catch {
             return interaction.reply({
-                content: 'You have not verified an Ethereum address yet, use /verify command',
+                content: 'You have not verified an Ethereum address yet, use /connect command',
                 ephemeral: true
             });
         }

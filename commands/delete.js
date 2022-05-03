@@ -5,7 +5,7 @@ const { getEthAddress, deleteEntry } = require('../aws-dynamodb');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('delete')
-		.setDescription('Delete your verified Ethereum address'),
+		.setDescription('Delete your connected Ethereum address'),
 
 	async execute(interaction) {
         const discordHandle = interaction.user.tag
@@ -21,7 +21,7 @@ module.exports = {
 
         } catch {
             return interaction.reply({
-                content: 'You have not verified an Ethereum address yet, use /verify command',
+                content: 'You have not connected an Ethereum address yet, use /connect command',
                 ephemeral: true
             });
         }
