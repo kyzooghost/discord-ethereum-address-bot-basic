@@ -15,6 +15,7 @@ module.exports = {
 		if (!command) return;
 
 		try {
+			await interaction.deferReply();
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(error);
