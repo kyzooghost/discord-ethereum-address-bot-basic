@@ -2,7 +2,6 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const ethers = require("ethers")
 const { getEthAddress, deleteEntry, createEntry } = require('../aws-dynamodb');
 
-// /verify slash command - only work in #verify channel
 // Person types Ethereum address, press enter
 // Sanity check against incorrect Ethereum address using ethers.utils.isAddress
 // If person hasn't previously verified or has deleted their verified address, will create a new database entry
@@ -10,8 +9,8 @@ const { getEthAddress, deleteEntry, createEntry } = require('../aws-dynamodb');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('verify')
-		.setDescription('Verify your Ethereum address')
+		.setName('connect')
+		.setDescription('Connect your Ethereum address')
         .addStringOption(option => 
             option.setName('ethereum-address')
                 .setDescription('Your Ethereum address')
@@ -37,7 +36,7 @@ module.exports = {
                 await deleteEntry(discordHandle)
                 await createEntry(discordHandle, ethAddress)
                 return interaction.reply({
-                    content: 'Successfully changed your verified Ethereum address',
+                    content: 'Successfully changed your connected Ethereum address',
                     ephemeral: true
                 });
             } catch {
@@ -45,7 +44,7 @@ module.exports = {
             // Code smell here - error !== "entry not there", but we are treating it as such
                 await createEntry(discordHandle, ethAddress)
                 return interaction.reply({
-                    content: 'Successfully verified your Ethereum address',
+                    content: 'Successfully connected your Ethereum address',
                     ephemeral: true
                 });
             }
