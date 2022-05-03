@@ -30,9 +30,9 @@ module.exports = {
             // If valid Ethereum address
             // Try to obtain entry in database
 
-            let ethAddress = await getEthAddress(discordHandle)
+            let currentEthAddress = await getEthAddress(discordHandle)
 
-            if (ethAddress) {
+            if (currentEthAddress) {
             // -> No error => Entry found => Delete old entry, create new entry
                 // Is interaction.user.tag the Discord handle string we want?
                 await deleteEntry(discordHandle)
