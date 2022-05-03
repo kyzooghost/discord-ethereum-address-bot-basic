@@ -2,7 +2,7 @@ module.exports = {
 	name: 'interactionCreate',
 	async execute(client, interaction) {
 		
-		if (interaction.channel.hasOwnProperty('name')) {
+		if (interaction.hasOwnProperty('channel')) {
 			console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 		} else {
 			console.log(`${interaction.user.tag} triggered an interaction.`);
