@@ -20,7 +20,7 @@ module.exports = {
 
         } catch {
             return interaction.reply({
-                content: 'You have not verified an Ethereum address yet, use /connect command',
+                content: 'You have not connected an Ethereum address yet, use /connect command',
                 ephemeral: true
             });
         }
